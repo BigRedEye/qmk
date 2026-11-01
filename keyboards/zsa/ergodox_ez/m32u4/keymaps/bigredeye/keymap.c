@@ -66,9 +66,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return host_profile_process_record(keycode, record);
 }
 
-// A dim LED identifies the host profile; bright LEDs identify the active layer.
+// A dim LED identifies the host profile; layer LEDs are bright, or medium when overlapping.
 #define STATUS_LED_DIM 4
-#define STATUS_LED_BRIGHT 255
+#define STATUS_LED_BRIGHT 128
+#define STATUS_LED_OVERLAP 16
 
 layer_state_t layer_state_set_user(layer_state_t state) {
     uint8_t layer_leds = 0;
@@ -90,7 +91,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     const uint8_t profile_led = host_profile_is_mac() ? 3 : 2;
     for (uint8_t led = 1; led <= 3; ++led) {
         if (layer_leds & (1 << (led - 1))) {
-            ergodox_right_led_set(led, STATUS_LED_BRIGHT);
+            ergodox_right_led_set(led, led == profile_led ? STATUS_LED_OVERLAP : STATUS_LED_BRIGHT);
             ergodox_right_led_on(led);
         } else if (led == profile_led) {
             ergodox_right_led_set(led, STATUS_LED_DIM);
