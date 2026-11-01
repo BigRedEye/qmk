@@ -133,3 +133,7 @@ via*.json
 !/keyboards/zsa/**/keymaps/default/**
 !/keyboards/zsa/**/keymaps/oryx
 !/keyboards/zsa/**/keymaps/oryx/**
+
+# Personal ErgoDox keymap
+!/keyboards/zsa/ergodox_ez/m32u4/keymaps/bigredeye/
+!/keyboards/zsa/ergodox_ez/m32u4/keymaps/bigredeye/**
