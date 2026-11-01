@@ -6,3 +6,6 @@ LTO_ENABLE = yes
 
 # Accept presses immediately; debounce releases independently per key.
 DEBOUNCE_TYPE = asym_eager_defer_pk
+
+OS_DETECTION_ENABLE = yes
+SRC += host_profile.c
